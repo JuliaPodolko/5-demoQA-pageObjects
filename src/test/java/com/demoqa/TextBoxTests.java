@@ -16,6 +16,7 @@ public class TextBoxTests {
         Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
+        Configuration.browserVersion = "101.0.4951.41";
     }
 
     @Test
@@ -42,12 +43,11 @@ public class TextBoxTests {
         $("#currentAddress").setValue(currentAddresses); // Адрес
         $("#react-select-3-input").setValue(country).pressEnter(); // Страна
         $("#react-select-4-input").setValue(city).pressEnter(); // Город
-        $("#uploadPicture").uploadFromClasspath("src/test/resources/123.jpg");
-
-
+      //  $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
+        $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
 
         $("#submit").click();
 
-        $("#").shouldHave(text(firstName), text(lastName), text(userEmail));
+       // $("#").shouldHave(text(firstName), text(lastName), text(userEmail));
     }
 }
