@@ -23,9 +23,11 @@ public class TextBoxTests {
         String firstName = "Julia";
         String lastName = "Podolko";
         String userEmail = "Julia@yandex.ru";
-        String subjectsInput = "Тема";
         String userNumber = "9123456789";
         String userSubject = "Maths";
+        String currentAddresses = "1st Street, 25";
+        String country = "Rajasthan";
+        String city = "Jaipur";
 
 
         open ("/automation-practice-form");
@@ -38,6 +40,10 @@ public class TextBoxTests {
         $("#genterWrapper > div.col-md-9.col-sm-12 > div:nth-child(2) > label").click(); // Пол
         $x("//input[@id='subjectsInput']").setValue(userSubject).pressEnter(); // Предметы
         $("#hobbiesWrapper > div.col-md-9.col-sm-12 > div:nth-child(1) > label").click(); // Хобби
+        $("#currentAddress").setValue(currentAddresses); // Адрес
+        $("#react-select-3-input").setValue(country).pressEnter(); //Страна
+        $("#react-select-4-input").setValue(city).pressEnter(); //Город
+
 
 
         $("#submit").click();
