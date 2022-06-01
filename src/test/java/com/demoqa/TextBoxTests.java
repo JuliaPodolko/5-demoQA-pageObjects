@@ -32,17 +32,17 @@ public class TextBoxTests {
 
         open ("/automation-practice-form");
 
-        $("#firstName").setValue(firstName); // Имя
+        $("#firstName").setValue(firstName); // &#x418;&#x43C;&#x44F;
         $("#lastName").setValue(lastName); // Фамилия
         $("#userEmail").setValue(userEmail); // Электронная почта
-      //  $("#subjectsInput").setValue(subjectsInput); // Предметы
         $("#userNumber").setValue(userNumber); // Номер телефона
         $("#genterWrapper > div.col-md-9.col-sm-12 > div:nth-child(2) > label").click(); // Пол
         $x("//input[@id='subjectsInput']").setValue(userSubject).pressEnter(); // Предметы
         $("#hobbiesWrapper > div.col-md-9.col-sm-12 > div:nth-child(1) > label").click(); // Хобби
         $("#currentAddress").setValue(currentAddresses); // Адрес
-        $("#react-select-3-input").setValue(country).pressEnter(); //Страна
-        $("#react-select-4-input").setValue(city).pressEnter(); //Город
+        $("#react-select-3-input").setValue(country).pressEnter(); // Страна
+        $("#react-select-4-input").setValue(city).pressEnter(); // Город
+        $("#uploadPicture").uploadFromClasspath("src/test/resources/123.jpg");
 
 
 
