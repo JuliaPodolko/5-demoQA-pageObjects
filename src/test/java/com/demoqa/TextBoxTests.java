@@ -1,12 +1,10 @@
 package com.demoqa;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests {
@@ -16,7 +14,7 @@ public class TextBoxTests {
         Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.browserVersion = "101.0.4951.41";
+        Configuration.browserVersion = "98.0.4758.48";
     }
 
     @Test
@@ -33,7 +31,7 @@ public class TextBoxTests {
 
         open ("/automation-practice-form");
 
-        $("#firstName").setValue(firstName); // &#x418;&#x43C;&#x44F;
+        $("#firstName").setValue(firstName); // Name
         $("#lastName").setValue(lastName); // Фамилия
         $("#userEmail").setValue(userEmail); // Электронная почта
         $("#userNumber").setValue(userNumber); // Номер телефона
@@ -43,11 +41,18 @@ public class TextBoxTests {
         $("#currentAddress").setValue(currentAddresses); // Адрес
         $("#react-select-3-input").setValue(country).pressEnter(); // Страна
         $("#react-select-4-input").setValue(city).pressEnter(); // Город
+
       //  $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
-        $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
+       // $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
+      //  $("#uploadPicture").uploadFromClasspath("src/test/resources/11.txt");
+
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption("September");
+        $(".react-datepicker__year-select").selectOption("2008");
+        $(".react-datepicker__day--008").click();
 
         $("#submit").click();
 
-       // $("#").shouldHave(text(firstName), text(lastName), text(userEmail));
+        $(".table-responsive").shouldHave(text(firstName), text(lastName), text(userEmail), text(userNumber), text(userSubject), text(userSubject), text(currentAddresses), text(country), text(city), text("08 September,2008"));
     }
 }
