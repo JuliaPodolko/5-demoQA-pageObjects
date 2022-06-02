@@ -44,8 +44,6 @@ public class TextBoxTests {
         $("#react-select-4-input").setValue(city).pressEnter(); // Город
 
         $("#uploadPicture").uploadFromClasspath("1.jpg"); //Загрузка картинки
-       // $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
-      //  $("#uploadPicture").uploadFromClasspath("src/test/resources/11.txt");
 
         // Дата рождения
         $("#dateOfBirthInput").click();
