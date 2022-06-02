@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests {
@@ -35,17 +36,18 @@ public class TextBoxTests {
         $("#lastName").setValue(lastName); // Фамилия
         $("#userEmail").setValue(userEmail); // Электронная почта
         $("#userNumber").setValue(userNumber); // Номер телефона
-        $("#genterWrapper > div.col-md-9.col-sm-12 > div:nth-child(2) > label").click(); // Пол
-        $x("//input[@id='subjectsInput']").setValue(userSubject).pressEnter(); // Предметы
-        $("#hobbiesWrapper > div.col-md-9.col-sm-12 > div:nth-child(1) > label").click(); // Хобби
+        $(byText("Female")).click(); // Пол
+        $("#subjectsInput").setValue(userSubject).pressEnter(); // Предметы
+        $(byText("Sports")).click(); // Хобби
         $("#currentAddress").setValue(currentAddresses); // Адрес
         $("#react-select-3-input").setValue(country).pressEnter(); // Страна
         $("#react-select-4-input").setValue(city).pressEnter(); // Город
 
-      //  $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
+        $("#uploadPicture").uploadFromClasspath("1.jpg"); //Загрузка картинки
        // $("#uploadPicture").uploadFromClasspath("rsc/123.jpg");
       //  $("#uploadPicture").uploadFromClasspath("src/test/resources/11.txt");
 
+        // Дата рождения
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("September");
         $(".react-datepicker__year-select").selectOption("2008");
@@ -53,6 +55,19 @@ public class TextBoxTests {
 
         $("#submit").click();
 
-        $(".table-responsive").shouldHave(text(firstName), text(lastName), text(userEmail), text(userNumber), text(userSubject), text(userSubject), text(currentAddresses), text(country), text(city), text("08 September,2008"));
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+
+        $(".table-responsive").shouldHave(
+                text(firstName),
+                text(lastName),
+                text(userEmail),
+                text(userNumber),
+                text(userSubject),
+                text(userSubject),
+                text(currentAddresses),
+                text(country),
+                text(city),
+                text("08 September,2008"),
+                text("1.jpg"));
     }
 }
