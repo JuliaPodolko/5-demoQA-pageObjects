@@ -24,7 +24,8 @@ public class RegistrationFormPage {
             filePathInput = $("#uploadPicture"),
             submitClick = $("#submit"),
             birthDateInput = $("#dateOfBirthInput"),
-            tableTitle = $(".table-responsive");
+            tableTitle = $(".table-responsive"),
+            finalMessage = $("#example-modal-sizes-title-lg");
 
     //actions
     public RegistrationFormPage openPage(String value) {
@@ -87,11 +88,12 @@ public class RegistrationFormPage {
         calendar.setDate(day, month, year);
         return this;
     }
-
-
-
     public RegistrationFormPage checkResult(String key, String value) {
         tableTitle.$(byText(key)).parent().shouldHave(text(value));
+        return this;
+    }
+    public RegistrationFormPage checkFinal(String value) {
+        finalMessage.shouldHave(text(value));
         return this;
     }
 }

@@ -31,12 +31,14 @@ public class RegistrationFormPageObjectsTests {
             gender = "Female",
             hobby = "Sports",
             filePath = "1.jpg",
-            title = "Student Registration Form",
+            title = "Thanks for submitting the form",
             day = "30",
             month = "September",
             year = "2008";
     //Expected data
-    String expectedFullName = format("%s %s", firstName, lastName);
+    String expectedFullName = format("%s %s", firstName, lastName),
+            expectedDate = format("%s %s,%s", day, month, year),
+            expectedLocation = format("%s %s", country, city);
 
     @BeforeAll
     static void setUP () {
@@ -61,26 +63,18 @@ public class RegistrationFormPageObjectsTests {
                 .setSubmit() // Клик по кнопке
                 .setBirthDate(day, month, year); // Дата рождения
 
-
-
         //asserts
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-      //  $(".table-responsive").$(byText("Student Name"))
-       //         .parent().shouldHave(text(expectedFullName));
-
-        registrationFormPage.checkResult("Student Name", expectedFullName);
-        $(".table-responsive").shouldHave(
-                text(firstName),
-                text(lastName),
-                text(userEmail),
-                text(userNumber),
-                text(userSubject),
-                text(userSubject),
-                text(currentAddresses),
-                text(country),
-                text(city),
-                text("30 September,2008"),
-                text(filePath));
+        registrationFormPage.checkResult("Student Name", expectedFullName)
+                .checkResult("Student Email", userEmail)
+                .checkResult("Gender", gender)
+                .checkResult("Mobile", userNumber)
+                .checkResult("Date of Birth", expectedDate)
+                .checkResult("Subjects", userSubject)
+                .checkResult("Hobbies", hobby)
+                .checkResult("Picture", filePath)
+                .checkResult("Address", currentAddresses)
+                .checkResult("State and City", expectedLocation);
+        registrationFormPage.checkFinal(title);
     }
 
 }
